@@ -1,38 +1,68 @@
-# sv
+# 3D4E Website 
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A newer website for 3D4E at UCLA to showcase our qualities as a club.
 
-## Creating a project
+## Technology Stack
 
-If you're seeing this, you've probably already done this step. Congrats!
+- **Application Framework**: Sveltekit, for UI and ease of use. 
+- **Development**: Nix for reproducible environments
+
+## Development Setup
+
+### Prerequisites
+1. Install Nix:
+```bash
+sh <(curl -L https://nixos.org/nix/install)
+```
+2. Enable Flakes
+```bash
+mkdir -p ~/.config/nix
+echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
+```
+3. Enter Dev Environment:
+```bash
+nix develop
+```
+## Development Workflow
+
+### Branch Structure
+- `main` - Deployed branch
+- `dev` - Development branch
+- `feature/[feature-name]` - Individual feature branches
+
+### Workflow Steps
+#### 1. Starting New Work
+- Create a new branch from `dev`
+```bash
+git checkout dev
+git pull origin dev
+git checkout -b feature/your-feature
+```
+#### 2. During Development
+- Commit regularly with clear messages
+- Keep pulls from dev to stay updated
+```bash
+git commit -m "descriptive message"
+git pull origin dev
+```
+#### 3. Submitting Changes
+- Push your feature branch
+- Create a Pull Request (PR) to dev
+- ***GET A REVIEW BEFORE MERGING***
 
 ```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
+git push origin feature/your-feature
 ```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
+### Setup Instructions
+1. Clone the repository
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+git clone https://github.com/AshamedConsequence/3D4E-Website.git
+cd 3D4E-Website 
 ```
-
-## Building
-
-To create a production version of your app:
-
+2. Enter Nix development environment
 ```bash
-npm run build
+nix develop
 ```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+3. Install dependencies
+```bash
+npm install
